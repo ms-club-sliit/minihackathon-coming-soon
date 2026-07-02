@@ -77,7 +77,6 @@ body {
 }
 
 .terminal-header {
-  position: relative;
   background: rgba(255, 255, 255, 0.48);
   backdrop-filter: blur(16px);
   border-radius: 1.2rem 1.2rem 0.85rem 0.85rem;
@@ -85,11 +84,12 @@ body {
   margin: -1.5rem -1.5rem 1.25rem;
 }
 
+/* Title truncates within its own grid column instead of being absolutely
+   centered, so it can never overlap the traffic-light dots on narrow screens. */
 .terminal-header-title {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .terminal-log {
@@ -102,6 +102,8 @@ body {
   background-clip: text;
   color: transparent;
   text-shadow: 0 0 18px rgba(140, 99, 254, 0.12);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .cursor-blink {
@@ -205,6 +207,7 @@ body {
     opacity: 0;
     transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -212,10 +215,12 @@ body {
 }
 
 @keyframes cursorBlink {
+
   0%,
   49% {
     opacity: 1;
   }
+
   50%,
   100% {
     opacity: 0;
@@ -226,6 +231,7 @@ body {
   from {
     transform: translate3d(0, 0, 0) scale(1);
   }
+
   to {
     transform: translate3d(4rem, 2rem, 0) scale(1.08);
   }
@@ -235,6 +241,7 @@ body {
   from {
     transform: translate3d(0, 0, 0) scale(1);
   }
+
   to {
     transform: translate3d(1.5rem, 0.5rem, 0) scale(1.04);
   }
@@ -244,6 +251,7 @@ body {
   from {
     transform: translateX(-50%) translate3d(0, 0, 0) scale(1);
   }
+
   to {
     transform: translateX(-50%) translate3d(0, -1rem, 0) scale(1.03);
   }
@@ -253,6 +261,7 @@ body {
   from {
     transform: translate3d(0, 0, 0) scale(1);
   }
+
   to {
     transform: translate3d(-1.5rem, 0.8rem, 0) scale(1.04);
   }
@@ -262,12 +271,14 @@ body {
   from {
     transform: translate3d(0, 0, 0) scale(1);
   }
+
   to {
     transform: translate3d(1rem, -0.5rem, 0) scale(1.06);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .aurora,
   .beam,
   .logo-pill,
@@ -312,5 +323,23 @@ body {
     height: 60vh;
     opacity: 0.16;
     filter: blur(78px);
+  }
+}
+
+/* Small-device safety net: iPhone SE-class widths (~320-380px) are where the
+   hero wordmark and terminal chrome run tightest on space. */
+@media (max-width: 380px) {
+  .terminal-card {
+    padding: 0.85rem;
+  }
+
+  .terminal-header {
+    margin: -0.85rem -0.85rem 0.85rem;
+    padding: 0.65rem 0.7rem;
+  }
+
+  .terminal-log {
+    min-height: 9rem;
+    font-size: 0.76rem;
   }
 }
