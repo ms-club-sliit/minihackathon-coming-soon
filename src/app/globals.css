@@ -96,6 +96,17 @@ body {
   min-height: 11rem;
 }
 
+.tagline-highlight {
+  display: inline-block;
+  padding: 0.25rem 0.85rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(140, 99, 254, 0.14), rgba(255, 111, 216, 0.14));
+  border: 1px solid rgba(140, 99, 254, 0.3);
+  color: var(--deep-violet);
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 18px rgba(140, 99, 254, 0.14);
+}
+
 .hero-gradient {
   background: linear-gradient(90deg, var(--brand-purple), var(--magenta-accent), var(--cyan-accent));
   -webkit-background-clip: text;

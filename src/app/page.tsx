@@ -205,8 +205,8 @@ export default function Home() {
                 <span className="cursor-blink ml-1 align-middle text-[#4B2E9E]/80">▍</span>
               </p>
 
-              <p className="mt-3 text-xs font-medium text-[#1c1630]/68 sm:mt-4 sm:text-base">
-                Innovation starts here
+              <p className="mt-4 text-sm font-semibold sm:mt-5 sm:text-xl">
+                <span className="tagline-highlight">Innovation starts here</span>
               </p>
             </div>
           </div>
